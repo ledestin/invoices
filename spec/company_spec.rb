@@ -28,5 +28,12 @@ describe Company do
       spacex.invoice_to :customer
       expect(spacex.send_invoice).to eq "Sending to Elon Musk"
     end
+
+    it "can be setup to send invoices to different recipients" do
+      spacex.invoice_to :customer
+
+      expect(spacex.send_invoice).to eq "Sending to Elon Musk"
+      expect(tesla.send_invoice).to eq "Sending to Tesla"
+    end
   end
 end
