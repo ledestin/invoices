@@ -11,6 +11,8 @@ class Company < Struct.new(:name, :locations)
     INVOICE
   end
 
+  private
+
   def amount_to_pay
     Bill.for self
   end
