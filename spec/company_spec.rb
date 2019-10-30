@@ -18,4 +18,15 @@ describe Company do
       INVOICE
     end
   end
+
+  describe "#send_invoice" do
+    it "sends invoice to the company itself by default" do
+      expect(spacex.send_invoice).to eq "Sending to SpaceX"
+    end
+
+    it "sends invoice to the customer if so instructed" do
+      spacex.invoice_to :customer
+      expect(spacex.send_invoice).to eq "Sending to Elon Musk"
+    end
+  end
 end

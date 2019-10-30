@@ -1,7 +1,17 @@
 require "active_support/core_ext/object/blank"
 require_relative "initialize"
 
-class Customer < Struct.new(:name, :companies)
+class Customer
+  attr_accessor :name
+  attr_reader :companies
+
+  def companies=(value)
+    @companies = value
+    @companies.each do |company|
+      company.customer = self
+    end
+  end
+
   def invoices
     return [] unless companies.present?
 

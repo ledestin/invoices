@@ -13,9 +13,7 @@ RSpec.shared_context "data" do
   end
   let(:customer_without_companies) { build :customer }
   let(:customer_with_one_company) { build :customer, companies: [spacex] }
-  let(:customer_with_two_companies) do
-    build :customer, companies: [spacex, tesla]
-  end
+  let!(:elon_musk) { build :customer, companies: [spacex, tesla] }
 
   before :each do
     allow(Bill).to receive(:for) do |company_or_location|
