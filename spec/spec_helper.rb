@@ -1,4 +1,5 @@
 require "factory_bot"
+require "active_support/core_ext/array/access"
 
 RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods

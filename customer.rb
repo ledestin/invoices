@@ -5,11 +5,19 @@ class Customer < Struct.new(:name, :companies)
   def invoices
     return [] unless companies.present?
 
+    companies.map do |company|
+      invoice company
+    end
+  end
+
+  private
+
+  def invoice(company)
     invoice = <<~INVOICE
       Customer: #{name}
 
-      #{companies.map(&:invoice).join("\n")}
+      #{company.invoice}
     INVOICE
-    [invoice.chomp]
+    invoice.chomp
   end
 end

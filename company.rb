@@ -7,7 +7,7 @@ class Company < Struct.new(:name, :locations)
       Company: #{name}
       Locations:
       #{locations.map(&:invoice).join("\n")}
-      Subtotal: #{amount_to_pay.format}
+      Total: #{amount_to_pay.format}
     INVOICE
   end
 

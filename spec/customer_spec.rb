@@ -50,11 +50,11 @@ describe Customer do
         Florida: $40,000.00
         San Francisco: $40,000.00
         Hawaii: $10,000.00
-        Subtotal: $100,000.00
+        Total: $100,000.00
       INVOICE
     end
 
-    it "return an invoice if there are 2 companies defined" do
+    it "return 2 invoices if there are 2 companies defined" do
       expect(customer_with_two_companies.invoices.first).to eq <<~INVOICE
         Customer: Elon Musk
 
@@ -63,13 +63,17 @@ describe Customer do
         Florida: $40,000.00
         San Francisco: $40,000.00
         Hawaii: $10,000.00
-        Subtotal: $100,000.00
+        Total: $100,000.00
+      INVOICE
+
+      expect(customer_with_two_companies.invoices.second).to eq <<~INVOICE
+        Customer: Elon Musk
 
         Company: Tesla
         Locations:
         Paolo Alto: $100,000.00
         Detroit: $100,000.00
-        Subtotal: $200,000.00
+        Total: $200,000.00
       INVOICE
     end
   end
