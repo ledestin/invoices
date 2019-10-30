@@ -12,22 +12,20 @@ class Customer
     end
   end
 
-  def invoices
-    return [] unless companies.present?
+  def invoice
+    <<~INVOICE
+      Customer: #{name}
 
-    companies.map do |company|
-      invoice company
-    end
+      Locations:
+      #{locations_invoicing_to_customer.map(&:invoice).join("\n")}
+    INVOICE
   end
 
   private
 
-  def invoice(company)
-    invoice = <<~INVOICE
-      Customer: #{name}
-
-      #{company.invoice}
-    INVOICE
-    invoice.chomp
+  def locations_invoicing_to_customer
+    companies.flat_map(&:locations).select do
+      |location| location.invoicing_to == :customer
+    end
   end
 end

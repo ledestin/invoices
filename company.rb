@@ -13,6 +13,10 @@ class Company
     @invoice_to = new_receiver
   end
 
+  def invoice_all_locations_to(new_receiver)
+    locations.each { |location| location.invoice_to new_receiver }
+  end
+
   def invoice
     invoice = <<~INVOICE
       Company: #{name}

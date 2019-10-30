@@ -2,7 +2,7 @@ RSpec.shared_context "data" do
   let(:florida) { build :location, address: "Florida" }
   let(:san_francisco) { build :location, address: "San Francisco" }
   let(:hawaii) { build :location, address: "Hawaii" }
-  let(:paolo_alto) { build :location, address: "Paolo Alto" }
+  let(:paolo_alto) { build :location, address: "Palo Alto" }
   let(:detroit) { build :location, address: "Detroit" }
 
   let(:spacex) do
